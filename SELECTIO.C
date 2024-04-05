@@ -6,7 +6,7 @@ void selection(int arr[], int n)
 
     for (i = 0; i < n - 1; i++) 
     {
-        small = i; //minimum element in unsorted array
+        small = i; 
 
         for (j = i + 1; j < n; j++)
             if (arr[j] < arr[small])
