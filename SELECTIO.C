@@ -9,11 +9,11 @@ void display(int list[], int n) {
 
 void selectionsort(int list[], int n) {
     int indexMin, i, j, temp;
-    // loop through all numbers 
+   
     for(i = 0; i < n - 1; i++) {
-        // set current element as minimum 
+  
         indexMin = i;
-        // check the element to be minimum 
+      
         for(j = i + 1; j < n; j++) {
             if(list[j] < list[indexMin])
                 indexMin = j;
@@ -33,7 +33,7 @@ void selectionsort(int list[], int n) {
 int main() {
     int list[100], i, n;
 
-    printf("\nHow many elements do you want? : ");
+    printf("\n enter the elements do you want? : ");
     scanf("%d", &n);
     for(i = 0; i < n; i++) {
         printf("Enter the No [%d]: ", i + 1);
