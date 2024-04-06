@@ -1,40 +1,48 @@
-#include <stdio.h>
+#include <stdio.h> 
+#include <conio.h> 
 
-void selection(int arr[], int n)
-{
-    int i, j, small;
+void display(int list[], int n) {
+    int i;
+    for(i = 0; i < n; i++)
+        printf("%d ", list[i]);
+}
 
-    for (i = 0; i < n - 1; i++) 
-    {
-        small = i; 
-
-        for (j = i + 1; j < n; j++)
-            if (arr[j] < arr[small])
-                small = j;
- 
-        {
-            int temp = arr[small];
-            arr[small] = arr[i];
-            arr[i] = temp;
+void selectionsort(int list[], int n) {
+    int indexMin, i, j, temp;
+    // loop through all numbers 
+    for(i = 0; i < n - 1; i++) {
+        // set current element as minimum 
+        indexMin = i;
+        // check the element to be minimum 
+        for(j = i + 1; j < n; j++) {
+            if(list[j] < list[indexMin])
+                indexMin = j;
         }
+        if(indexMin != i) {
+            printf("\nItems swapped: [ %d, %d ]\n", list[i], list[indexMin]);
+            // swap the numbers 
+            temp = list[indexMin];
+            list[indexMin] = list[i];
+            list[i] = temp;
+        }
+        printf("\nIteration %d : ", (i + 1));
+        display(list, n);
     }
 }
 
-void printArr(int a[], int n) /* function to print the array */
-{
-    int i;
-    for (i = 0; i < n; i++)
-        printf("%d ", a[i]);
-}
+int main() {
+    int list[100], i, n;
 
-int main()
-{
-    int a[] = {12, 31, 25, 8, 32, 17};
-    int n = sizeof(a) / sizeof(a[0]);
-    printf("Before sorting array elements are - \n");
-    printArr(a, n);
-    selection(a, n);
-    printf("\nAfter sorting array elements are - \n");
-    printArr(a, n);
+    printf("\nHow many elements do you want? : ");
+    scanf("%d", &n);
+    for(i = 0; i < n; i++) {
+        printf("Enter the No [%d]: ", i + 1);
+        scanf("%d", &list[i]);
+    }
+    selectionsort(list, n);
+    printf("\n\nAfter Sorting:\n");
+    for(i = 0; i < n; i++)
+        printf("\t %d", list[i]);
+    getch();
     return 0;
 }
