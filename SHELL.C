@@ -1,39 +1,41 @@
-#include <stdio.h>
-#include <conio.h>
-
-void shellSort(int arr[], int n) {
-    
-    for (int gap = n / 2; gap > 0; gap /= 2) {
-        
-        for (int i = gap; i < n; i += 1) {
-           
-            int temp = arr[i];
-           
-            int j;
-            for (j = i; j >= gap && arr[j - gap] > temp; j -= gap)
-                arr[j] = arr[j - gap];
-          
-            arr[j] = temp;
-        }
-    }
-}
-
-void printArray(int arr[], int n) {
-    for (int i = 0; i < n; i++)
-        printf("%d ", arr[i]);
-    printf("\n");
-}
-
-int main() {
-    int arr[] = {12, 34, 54, 2, 3};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    printf("Array before sorting: \n");
-    printArray(arr, n);
-
-    shellSort(arr, n);
-
-    printf("Array after sorting: \n");
-    printArray(arr, n);
-    return 0;
+#include <stdio.h> 
+#include <conio.h> 
+void shellsort(int arr[], int num) 
+{ 
+int i, j, k, tmp; 
+for (i = num / 2; i > 0; i = i / 2) 
+   { 
+ for(j = i; j < num; j++) 
+   { 
+     for(k = j - i; k >= 0; k = k - i) 
+     { 
+       if(arr[k+i] >= arr[k]) 
+       break; 
+       else 
+     {  
+      tmp = arr[k]; 
+      arr[k] = arr[k+i]; 
+      arr[k+i] = tmp; 
+     } 
+     }   
+  } 
+ } 
+} 
+void main() 
+{ 
+  int array[10]; 
+   int i, num; 
+ clrscr(); 
+   printf("Enter No. of elements : "); 
+   scanf("%d", &num); 
+  for (i=0; i<num; i++) 
+  { 
+   printf("\nEnter value of Element [%d] : ",i); 
+   scanf("%d", &array[i]); 
+  }
+shellsort(array, num); 
+printf("\nSorted array is: "); 
+for(i=0; i<num; i++) 
+printf("%d ", array[i]); 
+getch();
 }
